@@ -25,10 +25,16 @@
     <!-- Tela do Jogo -->
     <div id="game-screen" class="screen">
         <div class="game-container">
-            <div class="header">
-                <h2>🃏 Jogo de Cartas</h2>
-                <p class="round-counter">Rodada <span id="round">1</span></p>
-            </div>
+                <div class="header">
+                    <div class="header-left">
+                        <h2>🃏 Jogo de Cartas</h2>
+                        <p class="round-counter">Rodada <span id="round">1</span></p>
+                    </div>
+                    <div class="header-right">
+                        <div class="mini-score">Você: <span id="player-score-mini">0</span></div>
+                        <div class="mini-score">Dealer: <span id="dealer-score-mini">0</span></div>
+                    </div>
+                </div>
 
             <div class="game-area">
                 <!-- Dealer -->
@@ -45,7 +51,7 @@
 
                 <!-- Mensagens -->
                 <div class="message-area">
-                    <p id="message" class="message"></p>
+                    <p id="message" class="message">Dica: Clique em "Comprar" para tirar carta — pare quando estiver perto de 21.</p>
                 </div>
 
                 <!-- Player -->
@@ -67,13 +73,13 @@
 
     <!-- Modal de Vitória/Recompensa -->
     <div id="reward-modal" class="modal">
-        <div class="modal-content">
-            <button onclick="closeReward()" class="close-modal">×</button>
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="reward-title">
+            <button onclick="closeReward()" class="close-modal" aria-label="Fechar">×</button>
             <div class="reward-image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeHH6vOApvQo19SbNQPAhh8effUpzjkFhTpg&s" alt="Amor" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeHH6vOApvQo19SbNQPAhh8effUpzjkFhTpg&s" alt="Imagem de comemoração" />
             </div>
             <div class="reward-text">
-                <p><strong>🎉 VOCÊ GANHOU! 🎉</strong></p>
+                <p id="reward-title"><strong>🎉 VOCÊ GANHOU! 🎉</strong></p>
                 <p>Sua recompensa:</p>
             </div>
             <div class="reward-message">

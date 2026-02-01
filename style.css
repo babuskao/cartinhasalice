@@ -23,6 +23,12 @@ body {
     overflow: hidden;
 }
 
+/* Layout centralizado melhor */
+.game-container {
+    margin: 40px auto;
+    padding: 20px;
+}
+
 /* ========== Screens ========== */
 .screen {
     position: fixed;
@@ -175,6 +181,13 @@ body {
     object-fit: cover;
 }
 
+.card:hover {
+    transform: translateY(-8px) rotateZ(-2deg) scale(1.03);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.45);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    z-index: 5;
+}
+
 @keyframes cardPop {
     0% {
         transform: scale(0) rotateZ(-10deg);
@@ -219,6 +232,11 @@ body {
     align-items: center;
     justify-content: center;
     border: 1px dashed var(--primary);
+}
+
+.message-area .message {
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
 }
 
 .message {
@@ -271,6 +289,12 @@ body {
     background: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(230, 57, 70, 0.5);
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .btn-primary:active:not(:disabled) {
@@ -336,6 +360,10 @@ body {
     border: 2px solid var(--primary);
 }
 
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
 @keyframes slideInUp {
     from {
         transform: translateY(50px);
@@ -381,6 +409,11 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
     border: 3px solid var(--primary);
+}
+
+/* mobile modal image */
+@media (max-width: 480px) {
+    .reward-image img { max-width: 220px; }
 }
 
 @keyframes slideDown {

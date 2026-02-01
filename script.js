@@ -131,6 +131,11 @@ function updateDisplay() {
 
     document.getElementById('player-score').textContent = gameState.playerScore;
     document.getElementById('dealer-score').textContent = gameState.dealerScore;
+    // mini scores in header
+    const miniP = document.getElementById('player-score-mini');
+    const miniD = document.getElementById('dealer-score-mini');
+    if (miniP) miniP.textContent = gameState.playerScore;
+    if (miniD) miniD.textContent = gameState.dealerScore;
 
     const playerHandEl = document.getElementById('player-hand');
     const dealerHandEl = document.getElementById('dealer-hand');
@@ -298,13 +303,18 @@ function endGame(type = null) {
 function showReward() {
     setTimeout(() => {
         triggerConfetti();
-        document.getElementById('reward-modal').classList.add('show');
+        const modal = document.getElementById('reward-modal');
+        modal.classList.add('show');
+        // disable background scroll while modal open
+        document.body.style.overflow = 'hidden';
         gameState.round++;
     }, 1000);
 }
 
 function closeReward() {
-    document.getElementById('reward-modal').classList.remove('show');
+    const modal = document.getElementById('reward-modal');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
 }
 
 // ========== Confete ==========
