@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🃏 Cartinhas da Alice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela Inicial -->
+    <div id="intro-screen" class="screen active">
+        <div class="intro-container">
+            <h1>🃏 Cartinhas</h1>
+            <div class="intro-text">
+                <p><strong>Feliz aniversário, meu amor.</strong></p>
+                <p>Eu gosto muito dessa parte da gente.</p>
+                <p>E às vezes sinto que não digo o bastante o quanto eu aprecio você por inteiro.</p>
+            </div>
+            <button onclick="startGame()" class="btn-start">Bora jogar? 💕</button>
+        </div>
+    </div>
+
+    <!-- Tela do Jogo -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <div class="header">
+                <h2>🃏 Jogo de Cartas</h2>
+                <p class="round-counter">Rodada <span id="round">1</span></p>
+            </div>
+
+            <div class="game-area">
+                <!-- Dealer -->
+                <div class="dealer-area">
+                    <h3>🤖 Dealer</h3>
+                    <div id="dealer-hand" class="hand"></div>
+                    <p class="score">Pontos: <span id="dealer-score">0</span></p>
+                </div>
+
+                <!-- Mensagens -->
+                <div class="message-area">
+                    <p id="message" class="message"></p>
+                </div>
+
+                <!-- Player -->
+                <div class="player-area">
+                    <h3>👤 Você</h3>
+                    <div id="player-hand" class="hand"></div>
+                    <p class="score">Pontos: <span id="player-score">0</span></p>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="actions">
+                <button id="btn-hit" onclick="playerHit()" class="btn btn-primary">Comprar 🃏</button>
+                <button id="btn-stand" onclick="playerStand()" class="btn btn-secondary">Parar ⏹️</button>
+                <button id="btn-reset" onclick="resetGame()" class="btn btn-reset" style="display: none;">Próxima Rodada 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Vitória/Recompensa -->
+    <div id="reward-modal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeReward()" class="close-modal">×</button>
+            <div class="reward-text">
+                <p><strong>🎉 VOCÊ GANHOU! 🎉</strong></p>
+                <p>Sua recompensa:</p>
+            </div>
+            <div class="reward-message">
+                <p>Você é a existência pela qual eu mais me apaixonei perdidamente. Meus filmes favoritos carregam personagens que me lembram você como se o mundo insistisse em te repetir para mim. De todo o amor que eu sinto, metade você sempre me devolve.</p>
+                <p>É bonito demais ver o mundo pelos seus olhos. Eu te admiro, amor. O seu jeito sério de enxergar o detalhe que ninguém comentou, você abrindo uma conversa sobre algo que passou despercebido num filme, sua sinceridade ao falar das coisas. Eu amo isso em você. Amo como você sempre foi honesto com a vida, com o que sente, comigo.</p>
+                <p>No ano que vem aí, eu desejo que venham ainda mais conquistas. Você merece enxergar a mudança que o seu esforço provoca na própria vida. Isso é só o começo, amor.</p>
+                <p>Te amar é a coisa mais fácil que existe, mesmo quando você não percebe. Quem cruza o seu caminho te admira só por te conhecer. E eu juro: até a minha parte mais lúcida é completamente louca por você.</p>
+                <p>Eu te amo demais. O "boa noite" pelo Discord nunca basta. Você me lembrando de beber água, você deixando pequenos pedaços seus espalhados pelas minhas coisas… eu sorrio toda vez. Um chaveiro, um brinquedo você mora em cada canto daqui.</p>
+                <p>Que privilégio o meu encontrar meu melhor amigo e meu namorado na mesma pessoa. Obrigada por tudo, amor. Que o mundo seja gentil com você, leve, cuidadoso porque você merece.</p>
+            </div>
+            <button onclick="resetGame()" class="btn btn-primary">Jogar Denovo 🃏</button>
+        </div>
+    </div>
+
+    <!-- Confete -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
