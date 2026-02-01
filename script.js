@@ -163,6 +163,9 @@ function startGame() {
 function resetGame() {
     document.getElementById('reward-modal').classList.remove('show');
     
+    // Incrementar rodada se jogo foi completado
+    const newRound = gameState.playerWon ? gameState.round + 1 : gameState.round;
+    
     gameState = {
         deck: createDeck(),
         playerHand: [],
@@ -170,11 +173,17 @@ function resetGame() {
         playerScore: 0,
         dealerScore: 0,
         gameOver: false,
-        round: gameState.round,
+        round: newRound,
         playerWon: false
     };
 
     document.getElementById('round').textContent = gameState.round;
+    
+    // Resetar estado dos botões
+    document.getElementById('btn-hit').disabled = false;
+    document.getElementById('btn-stand').disabled = false;
+    document.getElementById('btn-hit').style.opacity = '1';
+    document.getElementById('btn-stand').style.opacity = '1';
     document.getElementById('btn-hit').style.display = 'inline-block';
     document.getElementById('btn-stand').style.display = 'inline-block';
     document.getElementById('btn-reset').style.display = 'none';
@@ -217,6 +226,8 @@ function playerStand() {
 
     document.getElementById('btn-hit').disabled = true;
     document.getElementById('btn-stand').disabled = true;
+    document.getElementById('btn-hit').style.opacity = '0.5';
+    document.getElementById('btn-stand').style.opacity = '0.5';
 
     say('dealerWinning');
     
@@ -226,14 +237,18 @@ function playerStand() {
 }
 
 function dealerPlay() {
-    while (calculateScore(gameState.dealerHand) < 16) {
-        gameState.dealerHand.push(gameState.deck.pop());
-        updateDisplay();
+    // Dealer joga com delay para parecer mais realista
+    function dealerTurn() {
+        const dealerScore = calculateScore(gameState.dealerHand);
+        if (dealerScore < 16) {
+            gameState.dealerHand.push(gameState.deck.pop());
+            updateDisplay();
+            setTimeout(() => dealerTurn(), 1000);
+        } else {
+            determineWinner();
+        }
     }
-
-    setTimeout(() => {
-        determineWinner();
-    }, 800);
+    dealerTurn();
 }
 
 function determineWinner() {
@@ -243,27 +258,31 @@ function determineWinner() {
     if (dealerScore > 21) {
         say('dealerBust');
         gameState.playerWon = true;
+        endGame();
         showReward();
     } else if (playerScore > dealerScore) {
         say('playerWinning');
         gameState.playerWon = true;
+        endGame();
         showReward();
     } else if (playerScore < dealerScore) {
         say('dealerWinning');
         gameState.playerWon = false;
+        endGame();
     } else {
         say('tie');
         gameState.playerWon = false;
+        endGame();
     }
-
-    endGame();
 }
 
 function endGame(type = null) {
     gameState.gameOver = true;
 
-    document.getElementById('btn-hit').style.display = 'none';
-    document.getElementById('btn-stand').style.display = 'none';
+    document.getElementById('btn-hit').disabled = true;
+    document.getElementById('btn-stand').disabled = true;
+    document.getElementById('btn-hit').style.opacity = '0.5';
+    document.getElementById('btn-stand').style.opacity = '0.5';
     document.getElementById('btn-reset').style.display = 'inline-block';
 
     if (type === 'bust') {
