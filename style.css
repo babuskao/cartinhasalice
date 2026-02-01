@@ -368,6 +368,32 @@ body {
     margin-bottom: 25px;
 }
 
+.reward-image {
+    text-align: center;
+    margin-bottom: 25px;
+    animation: slideDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reward-image img {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+    border: 3px solid var(--primary);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .reward-text p:first-child {
     font-size: 1.8rem;
     margin-bottom: 10px;
