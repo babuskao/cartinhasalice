@@ -194,6 +194,21 @@ body {
     font-weight: 600;
 }
 
+.info-area {
+    background: rgba(230, 57, 70, 0.05);
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(230, 57, 70, 0.2);
+    font-size: 0.9rem;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.info-text {
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
 .message-area {
     text-align: center;
     padding: 20px;
@@ -242,19 +257,23 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.btn:disabled {
+    cursor: not-allowed;
+}
+
 .btn-primary {
     background: var(--primary);
     color: white;
     box-shadow: 0 6px 15px rgba(230, 57, 70, 0.3);
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
     background: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(230, 57, 70, 0.5);
 }
 
-.btn-primary:active {
+.btn-primary:active:not(:disabled) {
     transform: translateY(0);
 }
 
@@ -264,7 +283,7 @@ body {
     border: 2px solid var(--primary);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover:not(:disabled) {
     background: rgba(230, 57, 70, 0.2);
     transform: translateY(-2px);
 }

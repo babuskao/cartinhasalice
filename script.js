@@ -206,7 +206,7 @@ function resetGame() {
 }
 
 function playerHit() {
-    if (gameState.gameOver) return;
+    if (gameState.gameOver || gameState.deck.length === 0) return;
 
     gameState.playerHand.push(gameState.deck.pop());
     updateDisplay();
@@ -217,7 +217,12 @@ function playerHit() {
     } else if (gameState.playerScore === 21) {
         say('playerWinning');
     } else {
-        say('playerWinning');
+        const messages = [
+            "Pode ir comprando...",
+            "Mais uma? Vai fundo!",
+            "Tá na mão..."
+        ];
+        document.getElementById('message').textContent = messages[Math.floor(Math.random() * messages.length)];
     }
 }
 
