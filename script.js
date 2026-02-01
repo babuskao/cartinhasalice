@@ -165,6 +165,20 @@ function startGame() {
     resetGame();
 }
 
+function showRefusal() {
+    const overlay = document.getElementById('refusal-overlay');
+    if (!overlay) return;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function hideRefusal() {
+    const overlay = document.getElementById('refusal-overlay');
+    if (!overlay) return;
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
 function resetGame() {
     document.getElementById('reward-modal').classList.remove('show');
     

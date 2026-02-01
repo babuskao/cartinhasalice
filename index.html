@@ -13,7 +13,7 @@
     <!-- Tela Inicial -->
     <div id="intro-screen" class="screen active">
         <div class="intro-container">
-            <h1>🃏 Cartinhas</h1>
+            <h1>feliz aniversario chiquibeibi</h1>
             <div class="intro-media">
                 <img class="intro-image" src="https://pbs.twimg.com/media/G8DBDLrWIAIsH4V?format=jpg&name=900x900" alt="imagem" />
                 <p class="intro-caption">oh, nóis ai.</p>
@@ -22,7 +22,10 @@
                 <p><strong>Oi amor, vamo jogar um joguinho?</strong></p>
                 <p>Sei que você gosta... 💕</p>
             </div>
-            <button onclick="startGame()" class="btn-start btn-icon">Bora jogar? 🎮</button>
+            <div class="intro-actions">
+                <button onclick="startGame()" class="btn-start btn-icon">começa essa bomba aqui!</button>
+                <button onclick="showRefusal()" class="btn btn-secondary">nao quero começar nada nao</button>
+            </div>
         </div>
     </div>
 
@@ -102,6 +105,14 @@
 
     <!-- Confete -->
     <canvas id="confetti-canvas"></canvas>
+
+    <!-- Overlay exibido quando o usuário recusa começar -->
+    <div id="refusal-overlay" class="refusal-overlay" style="display:none;">
+        <div class="refusal-content">
+            <img src="https://i.redd.it/v2gwssvsxiy41.jpg" alt="refusal" class="refusal-img" />
+            <button onclick="hideRefusal()" class="btn btn-reset">perdao eu amor, eu pequei</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
